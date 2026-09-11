@@ -53,6 +53,17 @@ single-sector cap); 2pp churn buffer against last month's holdings; SPY
 below its 200-day SMA caps equity at 50% (rest SGOV); unfilled slots go to
 SGOV. Ledger: `data/sector_rotation_ledger.json` (local-only).
 
+## Backtest verdict (2026-09-11, `reports/backtest_940_2026-09-11.md`)
+
+Full 940-universe backtest of the production strategy, weekly rebalance,
+~10 months: **13.5% return, Sharpe 1.40, max drawdown −5.8%** — beats SPY
+(11.2%) with lower drawdown, but does NOT beat equal-weight of the same
+universe (16.5%) net of costs. Two known leaks: sector cache covers only
+~9% of weekly top-40s (throttling selection below 10 names), and weekly
+rebalancing churns positions out before stops/targets resolve (135 of 148
+exits were rebalance drops). Do not trade on real capital; fix the leaks
+first.
+
 ## Advisor mode (the only mode)
 
 - No broker credentials are stored anywhere. No orders are ever placed.
@@ -69,6 +80,7 @@ python -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 ./.venv/bin/python -m tracking.review_cards    # deterministic review of open cards
 ./.venv/bin/python -m tracking.verify_scan morning
 ./.venv/bin/python -m screener.sector_rotation # monthly ETF sleeve
+./.venv/bin/python backtest/backtest_940.py    # full-universe backtest
 ./.venv/bin/python -m pytest tests/ -q         # 95 tests
 ```
 
@@ -81,7 +93,7 @@ python -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 - `data/` — indicators, universe lists (DuckDB files are local-only, gitignored)
 - `backtest/` `strategies/` `risk/` — validation + position logic
 - `council/` — LLM review panel (design reference)
-- `reports/` — validation report + dated scan outputs
+- `reports/` — validation report, 940 backtest, dated scan outputs
 - `tests/` — 95 unit tests
 
 ## Status
