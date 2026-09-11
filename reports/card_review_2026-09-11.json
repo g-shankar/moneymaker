@@ -1,0 +1,373 @@
+{
+ "date": "2026-09-11",
+ "open_cards": 12,
+ "total_risk_dollars": 12264.0,
+ "sector_counts": {
+  "Unknown": 2,
+  "Basic Materials": 1,
+  "Industrials": 1,
+  "Technology": 2,
+  "Healthcare": 2,
+  "Energy": 2,
+  "Financial Services": 2
+ },
+ "sector_cap_breaches": [],
+ "cards": [
+  {
+   "card_id": "2026-09-11_morning_TST-4",
+   "symbol": "TST",
+   "sector": "Unknown",
+   "verdict": "FLAG",
+   "risk_dollars": 0.0,
+   "checks": {
+    "data": [
+     "FLAG",
+     "only 0 bars \u2014 insufficient history"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_TST-5",
+   "symbol": "TST",
+   "sector": "Unknown",
+   "verdict": "FLAG",
+   "risk_dollars": 0.0,
+   "checks": {
+    "data": [
+     "FLAG",
+     "only 0 bars \u2014 insufficient history"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_CF",
+   "symbol": "CF",
+   "sector": "Basic Materials",
+   "verdict": "PASS",
+   "risk_dollars": 1599.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (122.95) and SMA200 (108.93)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 60.3"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "4.8% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.00x ATR / target 6.00x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z 0.3"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 135.11 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_CNH",
+   "symbol": "CNH",
+   "sector": "Industrials",
+   "verdict": "PASS",
+   "risk_dollars": 171.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (11.19) and SMA200 (10.81)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 64.1"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "6.6% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.01x ATR / target 6.03x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z -0.3"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 13.50 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_CRM",
+   "symbol": "CRM",
+   "sector": "Technology",
+   "verdict": "PASS",
+   "risk_dollars": 3096.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (196.92) and SMA200 (200.99)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 62.6"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "9.7% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.00x ATR / target 6.00x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z -0.6"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 243.00 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_ELV",
+   "symbol": "ELV",
+   "sector": "Healthcare",
+   "verdict": "NOTE",
+   "risk_dollars": 3378.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (397.20) and SMA200 (360.57)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 60.2"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "4.5% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.00x ATR / target 6.00x ATR"
+    ],
+    "volume": [
+     "NOTE",
+     "volume z 3.1 \u2014 unusual activity, confirm catalyst"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 416.54 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_FRO",
+   "symbol": "FRO",
+   "sector": "Energy",
+   "verdict": "NOTE",
+   "risk_dollars": 459.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (40.56) and SMA200 (33.93)"
+    ],
+    "rsi": [
+     "NOTE",
+     "RSI-14 73.3 \u2014 hot but not extreme"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "0.7% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.00x ATR / target 6.00x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z 2.4"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 48.40 = -0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_NMR",
+   "symbol": "NMR",
+   "sector": "Financial Services",
+   "verdict": "PASS",
+   "risk_dollars": 57.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (9.82) and SMA200 (8.74)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 65.2"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "2.3% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 2.95x ATR / target 5.90x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z 1.8"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 10.54 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_OKTA",
+   "symbol": "OKTA",
+   "sector": "Technology",
+   "verdict": "PASS",
+   "risk_dollars": 2586.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (148.33) and SMA200 (103.21)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 62.0"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "4.6% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.00x ATR / target 6.00x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z 0.2"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 171.11 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_PBR",
+   "symbol": "PBR",
+   "sector": "Energy",
+   "verdict": "PASS",
+   "risk_dollars": 192.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (18.46) and SMA200 (17.20)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 69.3"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "3.9% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.01x ATR / target 6.01x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z 1.8"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 21.38 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_ROIV",
+   "symbol": "ROIV",
+   "sector": "Healthcare",
+   "verdict": "PASS",
+   "risk_dollars": 492.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (35.68) and SMA200 (28.81)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 68.3"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "3.7% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 3.00x ATR / target 6.00x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z -0.3"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 40.94 = +0.00R vs entry"
+    ]
+   }
+  },
+  {
+   "card_id": "2026-09-11_morning_full940_XP",
+   "symbol": "XP",
+   "sector": "Financial Services",
+   "verdict": "PASS",
+   "risk_dollars": 234.0,
+   "checks": {
+    "trend": [
+     "PASS",
+     "above SMA50 (17.06) and SMA200 (18.06)"
+    ],
+    "rsi": [
+     "PASS",
+     "RSI-14 68.2"
+    ],
+    "distance_from_high": [
+     "PASS",
+     "13.7% below 52w high"
+    ],
+    "bracket_atr": [
+     "PASS",
+     "stop 2.98x ATR / target 5.97x ATR"
+    ],
+    "volume": [
+     "PASS",
+     "volume z 0.7"
+    ],
+    "intraday_position": [
+     "PASS",
+     "last 19.97 = +0.00R vs entry"
+    ]
+   }
+  }
+ ]
+}

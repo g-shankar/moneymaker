@@ -520,8 +520,11 @@ class TestAdvisorCards:
 
         cfg = dict(_ADVISOR_CFG)
         cfg["paths"] = {"reports_dir": str(tmp_path / "reports")}
+        # Isolated empty journal: real open paper positions must not leak
+        # into the portfolio-guard context of a unit test.
         md_path, json_path = cmd_advisor(cfg, str(dec_path), str(dos_path),
-                                         "2026-09-11")
+                                         "2026-09-11",
+                                         journal_db=str(tmp_path / "empty_journal.duckdb"))
         assert md_path.exists() and json_path.exists()
         payload = json.loads(json_path.read_text())
         assert payload["executed"] is False

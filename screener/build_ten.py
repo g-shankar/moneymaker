@@ -16,6 +16,7 @@ import yfinance as yf
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from data.indicators import atr
 from screener.screen import score_frame
+from screener.sizing import PAPER_EQUITY, RISK_PCT, risk_dollars, size_shares
 from screener.store import get_conn
 
 logging.basicConfig(level=logging.WARNING)
@@ -82,26 +83,31 @@ def main():
         a = c["atr_14"]
         stop = round(entry - 3.0 * a, 2)
         tgt = round(entry + 2 * (entry - stop), 2)
-        risk = round((entry - stop) * 100, 2)
+        # Equal-risk sizing: every card risks ~$1,000 of the $100k paper book.
+        qty = size_shares(entry, stop)
+        risk = round((entry - stop) * qty, 2)
         out.append({
             "symbol": c["symbol"], "sector": c["sector"],
             "score": round(c["composite_score"], 3),
             "ret_20d": c["ret_20d"], "rsi_14": c["rsi_14"],
             "dist_52wk_high_pct": c["dist_52wk_high_pct"],
             "entry": entry, "stop": stop, "target": tgt,
-            "qty": 100, "risk": risk,
+            "qty": qty, "risk": risk,
         })
     rep_path = BASE / "reports" / f"full940_ten_{date.today().isoformat()}.json"
     rep_path.write_text(json.dumps({
         "date": date.today().isoformat(), "universe": len(uni), "scored": len(scored),
-        "sector_counts": counts, "cards": out,
+        "sector_counts": counts,
+        "sizing": {"paper_equity": PAPER_EQUITY, "risk_pct": RISK_PCT,
+                   "risk_dollars_per_trade": risk_dollars()},
+        "cards": out,
         "top40": [{"symbol": c["symbol"], "sector": c["sector"],
                    "score": round(c["composite_score"], 3)} for c in cands],
     }, indent=1))
     print(f"wrote {rep_path}")
     for o in out:
         print(f"  {o['symbol']:6s} {o['sector'][:22]:22s} score={o['score']:.3f} "
-              f"entry={o['entry']} stop={o['stop']} tgt={o['target']} risk=${o['risk']:.0f}")
+              f"entry={o['entry']} stop={o['stop']} tgt={o['target']} qty={o['qty']} risk=${o['risk']:.0f}")
 
 
 if __name__ == "__main__":

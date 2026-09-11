@@ -35,7 +35,7 @@ import logging
 import os
 import time
 import uuid
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import numpy as np
@@ -158,23 +158,53 @@ def score_frame(symbol: str, df: pd.DataFrame) -> dict | None:
     }
 
 
+def latest_complete_trading_day(ref: date | None = None) -> date:
+    """Most recent weekday strictly before `ref` (default today).
+
+    Scans run at 08:00/12:12/15:00 ET, always before today's bar closes, so
+    the freshest usable daily bar is the previous trading day. Weekends step
+    back to Friday. Exchange holidays are NOT modeled: on a holiday the
+    target date has no bars, symbols refetch harmlessly, and upsert_bars
+    makes the re-download idempotent.
+    """
+    d = (ref or date.today()) - timedelta(days=1)
+    while d.weekday() >= 5:  # Saturday / Sunday
+        d -= timedelta(days=1)
+    return d
+
+
 def main() -> None:
     run_id = uuid.uuid4().hex[:12]
     run_date = date.today().isoformat()
     symbols = [s.strip() for s in UNIVERSE_FILE.read_text().splitlines() if s.strip()]
-    log.info("universe: %d symbols, run_id=%s", len(symbols), run_id)
+    universe_size = len(symbols)
+    log.info("universe: %d symbols, run_id=%s", universe_size, run_id)
 
     con = get_conn()
     init_db(con)
-    # Resume: skip symbols already stored (reboots kill the sweep; upsert makes
-    # re-runs safe, but skipping avoids re-downloading finished symbols).
+    # Freshness-aware resume: skip a symbol ONLY if its latest stored bar already
+    # covers the last completed trading day. Mere presence in daily_bars is NOT
+    # enough — the old presence-check meant symbols were never refetched, so a
+    # Monday scan would rank on Thursday's data forever.
+    target_day = latest_complete_trading_day().isoformat()
     try:
-        done = {r[0] for r in con.execute("SELECT DISTINCT symbol FROM daily_bars").fetchall()}
+        fresh = {
+            r[0]
+            for r in con.execute(
+                "SELECT symbol FROM daily_bars GROUP BY symbol HAVING MAX(date) >= ?",
+                [target_day],
+            ).fetchall()
+        }
     except Exception:
-        done = set()
-    skipped = [s for s in symbols if s in done]
-    symbols = [s for s in symbols if s not in done]
-    log.info("resume: %d symbols already in DB, %d remaining", len(skipped), len(symbols))
+        fresh = set()
+    skipped = [s for s in symbols if s in fresh]
+    symbols = [s for s in symbols if s not in fresh]
+    log.info(
+        "resume: %d symbols already fresh through %s, %d to refresh",
+        len(skipped),
+        target_day,
+        len(symbols),
+    )
     record_run(con, run_id, run_date, {
         "batch_size": BATCH_SIZE,
         "min_dollar_vol_20": MIN_DOLLAR_VOL_20,
@@ -226,7 +256,7 @@ def main() -> None:
     REPORT_PATH.write_text(json.dumps({
         "run_id": run_id,
         "run_date": run_date,
-        "universe_size": len(symbols),
+        "universe_size": universe_size,
         "downloaded_ok": downloaded_ok,
         "download_failures": len(failures),
         "download_failure_symbols": failures,

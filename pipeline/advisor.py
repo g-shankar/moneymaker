@@ -468,19 +468,21 @@ def _duckdb_returns_fn():
         return None
 
 
-def _advisor_portfolio_context(cfg: dict, dossiers_data: dict | None) -> dict:
+def _advisor_portfolio_context(cfg: dict, dossiers_data: dict | None,
+                               journal_db: str | None = None) -> dict:
     """Build the portfolio-guard context for build_advisor_cards.
 
     Open positions come from the paper-trade journal (advisor mode has no
     broker positions); macro score from the dossiers' Kalshi block.
     Everything is best-effort — a failure yields an empty context, never
-    a crash.
+    a crash. `journal_db` overrides the journal path (tests use a tmp DB so
+    real open positions never leak into unit tests).
     """
     open_positions: list[dict] = []
     try:
         from tracking import journal as _journal
 
-        for c in _journal.open_cards():
+        for c in _journal.open_cards(journal_db):
             risk = float(c.get("qty") or 0) * max(
                 0.0, float(c.get("entry") or 0) - float(c.get("stop") or 0))
             open_positions.append(
@@ -517,6 +519,7 @@ def cmd_advisor(
     dossiers_path: str | None,
     date_str: str,
     scan_session: str = "morning",
+    journal_db: str | None = None,
 ) -> tuple[Path, Path]:
     """Build advisor cards from a decisions file. Never touches broker/."""
     from pipeline.common import configured_path
@@ -552,7 +555,8 @@ def cmd_advisor(
 
     cards = build_advisor_cards(
         decisions, dossiers_by_symbol, cfg, date_str,
-        portfolio_context=_advisor_portfolio_context(cfg, dossiers_data),
+        portfolio_context=_advisor_portfolio_context(cfg, dossiers_data,
+                                                     journal_db),
     )
     guard_notes = getattr(cards, "guard_notes", None) or []
     if guard_notes:

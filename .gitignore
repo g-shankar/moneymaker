@@ -9,8 +9,5 @@ reports/daily/
 # Python
 __pycache__/
 .pytest_cache/
-# local-only data + env
-.venv/
-*.duckdb
-*.wal
-.env
+# sector rotation ledger (regenerated monthly)
+data/sector_rotation_ledger.json
