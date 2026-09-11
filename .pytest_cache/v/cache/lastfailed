@@ -1,0 +1,3 @@
+{
+  "tests/test_advisor_signals.py::TestExtendedHours::test_gap_risk_flag": true
+}

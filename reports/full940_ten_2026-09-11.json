@@ -1,0 +1,347 @@
+{
+ "date": "2026-09-11",
+ "universe": 940,
+ "scored": 917,
+ "sector_counts": {
+  "Energy": 2,
+  "Technology": 2,
+  "Financial Services": 2,
+  "Industrials": 1,
+  "Healthcare": 2,
+  "Basic Materials": 1
+ },
+ "cards": [
+  {
+   "symbol": "FRO",
+   "sector": "Energy",
+   "score": 6.287,
+   "ret_20d": 22.31,
+   "rsi_14": 73.3,
+   "dist_52wk_high_pct": 0.7,
+   "entry": 48.4,
+   "stop": 43.81,
+   "target": 57.58,
+   "qty": 100,
+   "risk": 459.0
+  },
+  {
+   "symbol": "PBR",
+   "sector": "Energy",
+   "score": 5.97,
+   "ret_20d": 20.38,
+   "rsi_14": 69.3,
+   "dist_52wk_high_pct": 3.9,
+   "entry": 21.38,
+   "stop": 19.46,
+   "target": 25.22,
+   "qty": 100,
+   "risk": 192.0
+  },
+  {
+   "symbol": "OKTA",
+   "sector": "Technology",
+   "score": 5.417,
+   "ret_20d": 16.16,
+   "rsi_14": 62.0,
+   "dist_52wk_high_pct": 4.6,
+   "entry": 171.11,
+   "stop": 145.25,
+   "target": 222.83,
+   "qty": 100,
+   "risk": 2586.0
+  },
+  {
+   "symbol": "CRM",
+   "sector": "Technology",
+   "score": 5.092,
+   "ret_20d": 25.7,
+   "rsi_14": 62.6,
+   "dist_52wk_high_pct": 9.7,
+   "entry": 243.0,
+   "stop": 212.04,
+   "target": 304.92,
+   "qty": 100,
+   "risk": 3096.0
+  },
+  {
+   "symbol": "XP",
+   "sector": "Financial Services",
+   "score": 4.935,
+   "ret_20d": 29.34,
+   "rsi_14": 68.2,
+   "dist_52wk_high_pct": 13.7,
+   "entry": 19.97,
+   "stop": 17.63,
+   "target": 24.65,
+   "qty": 100,
+   "risk": 234.0
+  },
+  {
+   "symbol": "CNH",
+   "sector": "Industrials",
+   "score": 4.86,
+   "ret_20d": 25.82,
+   "rsi_14": 64.1,
+   "dist_52wk_high_pct": 6.6,
+   "entry": 13.5,
+   "stop": 11.79,
+   "target": 16.92,
+   "qty": 100,
+   "risk": 171.0
+  },
+  {
+   "symbol": "ELV",
+   "sector": "Healthcare",
+   "score": 4.679,
+   "ret_20d": 4.36,
+   "rsi_14": 60.2,
+   "dist_52wk_high_pct": 4.5,
+   "entry": 416.54,
+   "stop": 382.76,
+   "target": 484.1,
+   "qty": 100,
+   "risk": 3378.0
+  },
+  {
+   "symbol": "NMR",
+   "sector": "Financial Services",
+   "score": 4.667,
+   "ret_20d": 6.36,
+   "rsi_14": 65.2,
+   "dist_52wk_high_pct": 2.3,
+   "entry": 10.54,
+   "stop": 9.97,
+   "target": 11.68,
+   "qty": 100,
+   "risk": 57.0
+  },
+  {
+   "symbol": "CF",
+   "sector": "Basic Materials",
+   "score": 4.662,
+   "ret_20d": 12.58,
+   "rsi_14": 60.3,
+   "dist_52wk_high_pct": 4.8,
+   "entry": 135.11,
+   "stop": 119.12,
+   "target": 167.09,
+   "qty": 100,
+   "risk": 1599.0
+  },
+  {
+   "symbol": "ROIV",
+   "sector": "Healthcare",
+   "score": 4.566,
+   "ret_20d": 13.22,
+   "rsi_14": 68.3,
+   "dist_52wk_high_pct": 3.7,
+   "entry": 40.94,
+   "stop": 36.02,
+   "target": 50.78,
+   "qty": 100,
+   "risk": 492.0
+  }
+ ],
+ "top40": [
+  {
+   "symbol": "FRO",
+   "sector": "Energy",
+   "score": 6.287
+  },
+  {
+   "symbol": "PBR",
+   "sector": "Energy",
+   "score": 5.97
+  },
+  {
+   "symbol": "CNQ",
+   "sector": "Energy",
+   "score": 5.911
+  },
+  {
+   "symbol": "VLO",
+   "sector": "Energy",
+   "score": 5.871
+  },
+  {
+   "symbol": "YPF",
+   "sector": "Energy",
+   "score": 5.556
+  },
+  {
+   "symbol": "VG",
+   "sector": "Energy",
+   "score": 5.431
+  },
+  {
+   "symbol": "OKTA",
+   "sector": "Technology",
+   "score": 5.417
+  },
+  {
+   "symbol": "DINO",
+   "sector": "Energy",
+   "score": 5.181
+  },
+  {
+   "symbol": "APA",
+   "sector": "Energy",
+   "score": 5.127
+  },
+  {
+   "symbol": "PSX",
+   "sector": "Energy",
+   "score": 5.105
+  },
+  {
+   "symbol": "CRM",
+   "sector": "Technology",
+   "score": 5.092
+  },
+  {
+   "symbol": "EQNR",
+   "sector": "Energy",
+   "score": 5.026
+  },
+  {
+   "symbol": "MPC",
+   "sector": "Energy",
+   "score": 4.944
+  },
+  {
+   "symbol": "XP",
+   "sector": "Financial Services",
+   "score": 4.935
+  },
+  {
+   "symbol": "PAYP",
+   "sector": "Technology",
+   "score": 4.927
+  },
+  {
+   "symbol": "DVN",
+   "sector": "Energy",
+   "score": 4.883
+  },
+  {
+   "symbol": "CNH",
+   "sector": "Industrials",
+   "score": 4.86
+  },
+  {
+   "symbol": "AAPL",
+   "sector": "Technology",
+   "score": 4.844
+  },
+  {
+   "symbol": "ELV",
+   "sector": "Healthcare",
+   "score": 4.679
+  },
+  {
+   "symbol": "SWKS",
+   "sector": "Technology",
+   "score": 4.676
+  },
+  {
+   "symbol": "NMR",
+   "sector": "Financial Services",
+   "score": 4.667
+  },
+  {
+   "symbol": "CF",
+   "sector": "Basic Materials",
+   "score": 4.662
+  },
+  {
+   "symbol": "HPQ",
+   "sector": "Technology",
+   "score": 4.636
+  },
+  {
+   "symbol": "PAA",
+   "sector": "Energy",
+   "score": 4.598
+  },
+  {
+   "symbol": "ROIV",
+   "sector": "Healthcare",
+   "score": 4.566
+  },
+  {
+   "symbol": "AVTR",
+   "sector": "Healthcare",
+   "score": 4.538
+  },
+  {
+   "symbol": "TECH",
+   "sector": "Healthcare",
+   "score": 4.529
+  },
+  {
+   "symbol": "TEAM",
+   "sector": "Technology",
+   "score": 4.515
+  },
+  {
+   "symbol": "MRNA",
+   "sector": "Healthcare",
+   "score": 4.484
+  },
+  {
+   "symbol": "CVX",
+   "sector": "Energy",
+   "score": 4.376
+  },
+  {
+   "symbol": "IQV",
+   "sector": "Healthcare",
+   "score": 4.355
+  },
+  {
+   "symbol": "CHYM",
+   "sector": "Technology",
+   "score": 4.353
+  },
+  {
+   "symbol": "NTR",
+   "sector": "Basic Materials",
+   "score": 4.233
+  },
+  {
+   "symbol": "PR",
+   "sector": "Energy",
+   "score": 4.22
+  },
+  {
+   "symbol": "EOG",
+   "sector": "Energy",
+   "score": 4.046
+  },
+  {
+   "symbol": "HALO",
+   "sector": "Healthcare",
+   "score": 3.951
+  },
+  {
+   "symbol": "CVE",
+   "sector": "Energy",
+   "score": 3.913
+  },
+  {
+   "symbol": "EXPD",
+   "sector": "Industrials",
+   "score": 3.907
+  },
+  {
+   "symbol": "BMNR",
+   "sector": "Financial Services",
+   "score": 3.834
+  },
+  {
+   "symbol": "NTRA",
+   "sector": "Healthcare",
+   "score": 3.82
+  }
+ ]
+}

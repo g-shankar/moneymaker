@@ -1,0 +1,137 @@
+# council-trader — autonomous paper-trading system configuration.
+#
+# PAPER TRADING ONLY. Secrets are NEVER stored here: API keys are read from
+# environment variables (ALPACA_API_KEY, ALPACA_API_SECRET, NVIDIA_API_KEY,
+# OPENROUTER_API_KEY, TOGETHER_API_KEY) at runtime.
+# All paths are relative to the repository root.
+
+project: council-trader
+
+broker:
+  base_url: "https://paper-api.alpaca.markets"  # hard-coded paper endpoint; never change to live
+  data_feed: iex
+  mode: simulated  # simulated | alpaca
+  starting_cash: 100000  # simulated broker starting cash (USD)
+
+universe:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+  - TSLA
+  - AVGO
+  - JPM
+  - XOM
+  - UNH
+  - V
+  - MA
+  - JNJ
+  - PG
+  - COST
+  - HD
+  - NFLX
+  - AMD
+  - CRM
+  - ORCL
+  - PLTR
+  - QQQ
+  - SPY
+
+advisor:
+  # WEBULL ADVISOR MODE (user-selected): the system never executes and no
+  # API keys are stored anywhere. --advisor turns council decisions into
+  # copy-paste manual-execution cards (reports/advisor_<date>.md).
+  assumed_equity: 100000   # account size used for position sizing (USD)
+  max_cards_per_day: 5     # cap on cards emitted per day
+  min_conviction: 60        # decisions below this conviction are skipped
+  session_validity: "next session only"  # how long a card stays valid
+  entry_zone_pct: 0.3       # limit-entry zone half-width in percent
+
+etf_universe:
+  # Scanned every morning alongside the stock universe. Broad-market and
+  # sector ETFs only. Leveraged/inverse ETFs (e.g. TQQQ, SQQQ) are
+  # DELIBERATELY excluded: daily-reset decay makes them unsuitable for
+  # multi-day swing holds. Single-stock ETFs excluded too.
+  - SPY
+  - QQQ
+  - IWM
+  - DIA
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLP
+  - XLU
+  - XLY
+  - XLB
+  - XLRE
+  - SMH
+  - ARKK
+
+risk:
+  max_risk_per_trade_pct: 1.0
+  max_positions: 8
+  daily_loss_halt_pct: 3.0
+  kill_switch_file: "state/KILL_SWITCH"
+  max_day_trades: 3
+  # --- portfolio guards (risk/portfolio_guards.py, wired into advisor) ---
+  correlation_cap: 0.7        # reject new position if 60d corr > this vs any open
+  portfolio_heat_cap_pct: 6.0  # sum of open position risk-$ may not exceed this % of equity
+  regime_halve_score: 55      # Kalshi macro risk >= this halves all sizes (>= 70 veto fires)
+
+strategy1:
+  min_composite_score: 60
+  top_n: 5
+  atr_trailing_mult: 2.5
+  take_profit_r: 2.0
+  time_stop_days: 10
+
+strategy2:
+  enabled: false
+  note: "awaiting user definition — see strategies/strategy2_slot.py"
+
+schedule:
+  scan_time_et: "08:00"
+  eod_time_et: "16:30"
+
+council:
+  roles:
+    - technical_analyst
+    - quant
+    - social_news_analyst
+    - risk_analyst
+    - devils_advocate
+    - chair
+  min_conviction: 60
+  execution: subagent  # subagent | panel — "panel" calls council.panel.run_council in-process
+  panel:
+    timeout_s: 120
+    health_log: "state/council_health.jsonl"
+    providers:
+      nvidia:
+        base_url: "https://integrate.api.nvidia.com/v1"
+        api_key_env: "NVIDIA_API_KEY"
+      openrouter:
+        base_url: "https://openrouter.ai/api/v1"
+        api_key_env: "OPENROUTER_API_KEY"
+      together:
+        base_url: "https://api.together.xyz/v1"
+        api_key_env: "TOGETHER_API_KEY"
+    seats:
+      technical_analyst: {provider: null, model: null, lineage: null}
+      quant: {provider: null, model: null, lineage: null}
+      social_news_analyst: {provider: null, model: null, lineage: null}
+      risk_analyst: {provider: null, model: null, lineage: null}
+      devils_advocate: {provider: null, model: null, lineage: null}
+      chair: {provider: null, model: null, lineage: null}
+    candidates: []
+
+paths:
+  state_dir: "state"
+  reports_dir: "reports"
+  dossiers_dir: "reports/dossiers"
+  decisions_dir: "reports/decisions"
+  daily_dir: "reports/daily"

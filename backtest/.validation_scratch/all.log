@@ -1,0 +1,8 @@
+sens_atr_2p0: {'total_return': 0.2593, 'sharpe': 0.999, 'max_drawdown': -0.143, 'win_rate': 0.4488, 'profit_factor': 1.187, 'n_trades': 606, 'avg_win': 603.82, 'avg_loss': -414.11}  (469s)
+sens_atr_2p25: {'total_return': 0.2723, 'sharpe': 0.987, 'max_drawdown': -0.1489, 'win_rate': 0.4554, 'profit_factor': 1.181, 'n_trades': 560, 'avg_win': 697.3, 'avg_loss': -493.69}  (351s)
+sens_atr_2p5: {'total_return': 0.3776, 'sharpe': 1.258, 'max_drawdown': -0.1322, 'win_rate': 0.4916, 'profit_factor': 1.247, 'n_trades': 533, 'avg_win': 726.42, 'avg_loss': -562.97}  (364s)
+sens_atr_2p75: {'total_return': 0.294, 'sharpe': 1.002, 'max_drawdown': -0.1534, 'win_rate': 0.4864, 'profit_factor': 1.192, 'n_trades': 514, 'avg_win': 729.53, 'avg_loss': -579.49}  (411s)
+sens_atr_3p0: {'total_return': 0.4531, 'sharpe': 1.399, 'max_drawdown': -0.1565, 'win_rate': 0.515, 'profit_factor': 1.314, 'n_trades': 499, 'avg_win': 736.94, 'avg_loss': -595.39}  (276s)
+sens_r_1p5_atr2p5: {'total_return': 0.333, 'sharpe': 1.157, 'max_drawdown': -0.1359, 'win_rate': 0.4853, 'profit_factor': 1.224, 'n_trades': 544, 'avg_win': 688.82, 'avg_loss': -530.54}  (250s)
+sens_r_2p5_atr2p5: {'total_return': 0.3361, 'sharpe': 1.135, 'max_drawdown': -0.1415, 'win_rate': 0.4896, 'profit_factor': 1.23, 'n_trades': 527, 'avg_win': 697.67, 'avg_loss': -544.2}  (277s)
+wf_is1_atr_2p0: {'total_return': 0.0656, 'sharpe': 0.961, 'max_drawdown': -0.0881, 'win_rate': 0.4695, 'profit_factor': 1.207, 'n_trades': 164, 'avg_win': 496.8, 'avg_loss': -364.33}  (37s)

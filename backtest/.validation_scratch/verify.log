@@ -1,0 +1,2 @@
+verify_atr30: {'total_return': 0.4531, 'sharpe': 1.399, 'max_drawdown': -0.1565, 'win_rate': 0.515, 'profit_factor': 1.314, 'n_trades': 499, 'avg_win': 736.94, 'avg_loss': -595.39}  (391s)
+EXIT:0

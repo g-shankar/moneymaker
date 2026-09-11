@@ -1,0 +1,8 @@
+alpaca-py
+yfinance
+pandas
+numpy
+requests
+pyyaml
+pytest
+duckdb

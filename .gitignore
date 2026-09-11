@@ -1,0 +1,16 @@
+# Runtime state (kill switch sentinel, equity snapshots, council health log)
+state/
+# Generated artifacts: dossiers, decisions, daily reports
+reports/dossiers/
+reports/decisions/
+reports/daily/
+# Logs
+*.log
+# Python
+__pycache__/
+.pytest_cache/
+# local-only data + env
+.venv/
+*.duckdb
+*.wal
+.env
